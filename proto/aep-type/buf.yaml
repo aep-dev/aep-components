@@ -8,3 +8,5 @@ lint:
     - DEFAULT
   except:
    - PACKAGE_VERSION_SUFFIX
+deps:
+  - buf.build/bufbuild/protovalidate
