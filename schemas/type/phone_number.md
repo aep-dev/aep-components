@@ -36,7 +36,7 @@ if (!wireProto.getExtension().isEmpty()) {
 A `PhoneNumber` has two main fields, exactly one of which must be populated:
 
 - A `ShortCode` field named `short_code` (see below for details on `ShortCode`).
-- A string field named `e164_number`, representing an [E164][] number.
+- A string field named `number`, representing an [E164][] number.
 
   This field is formatted as a leading plus sign (`+`), followed by a phone
   number that uses a relaxed ITU E.164 format consisting of the country calling
@@ -83,7 +83,7 @@ A `ShortCode` has two fields, both of which are required:
 ## Examples
 
 - `{short_code: {region_code: "US", number: "911"}}`
-- `{e164_number: "+15552220123"}`
-- `{e164_number: "+15552220123", extension: "123,,456"}`
+- `{number: "+15552220123"}`
+- `{number: "+15552220123", extension: "123,,456"}`
 
 [E164]: https://en.wikipedia.org/wiki/E.164
