@@ -23,7 +23,7 @@ For instance, in Java this would be:
 dev.aep.type.PhoneNumber wireProto =
     dev.aep.type.PhoneNumber.newBuilder().build();
 com.google.i18n.phonenumbers.Phonenumber.PhoneNumber phoneNumber =
-    PhoneNumberUtil.getInstance().parse(wireProto.getE164Number(), "ZZ");
+    PhoneNumberUtil.getInstance().parse(wireProto.getNumber(), "ZZ");
 if (!wireProto.getExtension().isEmpty()) {
   phoneNumber.setExtension(wireProto.getExtension());
 }
