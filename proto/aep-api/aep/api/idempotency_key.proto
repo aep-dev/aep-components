@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package aep.api;
+
+option cc_enable_arenas = true;
+option go_package = "aep.dev/api";
+option java_multiple_files = true;
+option java_outer_classname = "IdempotencyKeyProto";
+option java_package = "dev.aep.api";
+option objc_class_prefix = "AEP";
+
+import "google/api/field_behavior.proto";
+import "google/protobuf/descriptor.proto";
+import "google/protobuf/timestamp.proto";
+
+// Used to identify a request as idempotent.
+//
+// IdempotencyKey fields must be annotated with an
+// `(aep.api.FieldBehavior).minimum_lifetime` field specifying the guaranteed
+// minimum duration for which the key will be respected.
+message IdempotencyKey {
+  // The unique key to use for idempotency.
+  // string key = 1;
+  string key = 1 [(google.api.field_behavior) = REQUIRED];
+
+  // The timestamp at which the first request was sent.
+  //
+  // If this is further in the past than the lifetime of the idempotency key
+  // (which *may* exceed the annotated minimum lifetime), the server *must*
+  // return an error.
+  google.protobuf.Timestamp first_sent = 2
+      [(google.api.field_behavior) = REQUIRED];
+}

@@ -15,7 +15,15 @@ jobs:
       - name: Verify that protos build.
         run: buf build
 
-      - uses: bufbuild/buf-push-action@v1
+      - id: push-aep-type
+        uses: bufbuild/buf-push-action@v1
+        with:
+          buf_token: ${{ secrets.BUF_TOKEN }}
+          input: proto/aep-type
+          draft: ${{ github.ref_name != 'main'}}
+
+      - id: push-aep-api
+        uses: bufbuild/buf-push-action@v1
         with:
           buf_token: ${{ secrets.BUF_TOKEN }}
           input: proto/aep-type

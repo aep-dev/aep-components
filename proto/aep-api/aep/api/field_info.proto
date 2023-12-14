@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package aep.api;
+
+option cc_enable_arenas = true;
+option go_package = "aep.dev/api";
+option java_multiple_files = true;
+option java_outer_classname = "FieldBehaviorProto";
+option java_package = "dev.aep.api";
+option objc_class_prefix = "AEP";
+
+import "google/protobuf/descriptor.proto";
+import "google/protobuf/duration.proto";
+
+// A field option documenting the applicable lifetime of a field, e.g. an
+// idempotency key.
+extend google.protobuf.FieldOptions {
+  FieldInfo field_info = 10520;
+}
+
+// Various options related to the behavior of a field.
+//
+// This is, conceptually, supplementary to `google.api.FieldInfo`.
+message FieldInfo {
+  // The minimum guaranteed duration for which the field value applies.
+  //
+  // For example, if an `idempotency_key` field has a lifetime of one hour, then
+  // subsequent requests made after one hour should not assume any idempotency
+  // guarantees from using the same idempotency key.
+  //
+  // This option only specifies a _minimum_ lifetime. APIs may honor fields for
+  // longer than the minimum lifetime, and API consumers should not assume that
+  // the minimum lifetime is a strict cutoff. For example, an API may honor an
+  // idempotency key indefinitely, whatever the value of this field option.
+  google.protobuf.Duration minimum_lifetime = 1;
+}
