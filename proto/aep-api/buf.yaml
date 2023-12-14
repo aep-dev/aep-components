@@ -1,5 +1,5 @@
 version: v1
-name: buf.build/aep/type-copy
+name: buf.build/aep/api
 breaking:
   use:
     - FILE
