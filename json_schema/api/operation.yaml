@@ -1,0 +1,32 @@
+Operation:
+  description: The status of a long running operation.
+  properties:
+    path:
+      type: string
+      description:
+        The server-assigned path, which is only unique within the same
+        service that originally returns it.
+    done:
+      type: boolean
+      description: >-
+        If the value is false, it means the operation is still in progress.
+        If true, the operation is completed, and either response or error
+        is available.
+    error:
+      $ref: '#/components/schemas/Error'
+    metadata:
+      type: object
+      description: >-
+        Service-specific metadata associated with the operation. It typically
+        contains progress information and common metadata such as create time.
+        Some services might not provide such metadata. Any method that returns a
+        long-running operation should document the metadata type, if any.
+    response:
+      type: object
+      description: >-
+        The normal response of the operation in case of success.
+        Depending on the method, this may be the empty object, the resource on which
+        the operation is performed, or a custom response.
+  required:
+    - path
+    - done
