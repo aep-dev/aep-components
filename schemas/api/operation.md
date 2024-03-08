@@ -18,7 +18,8 @@ An `Operation` has the following fields:
 
 - `done` is a boolean field indicating whether the operation has completed. If
   the value is `false`, it means the operation is still in progress. If `true`,
-  the operation is completed, and either `error` or `response` is available.
+  the operation is completed, and exactly one of `error` or `response` is
+  populated.
 
 - Two mutually exclusive fields containing the result of an operation:
 
