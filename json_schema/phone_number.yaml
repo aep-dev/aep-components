@@ -1,0 +1,76 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://aep.dev/json_schema/phone_number
+title: 'Phone Number'
+description: |
+  represents a phone number in a way suitable as an API wire format
+  - should not be used for locale-specific formatting of a phone number, such as
+    "+1 (650) 253-0000 ext. 123"
+  - is not designed for efficient storage
+  - may not be suitable for dialing - specialized libraries (see references)
+    should be used to parse the number for that purpose
+
+  To do something meaningful with this number, such as format it for various
+  use-cases, you will need a library like
+  https://github.com/google/libphonenumber
+oneOf:
+  - type: object
+    required:
+      - short_code
+    additionalProperties: false
+    properties:
+      short_code:
+        description: |
+          This must be exactly one of:
+          - Two alphabetical characters (such as "US"); OR
+          - Three numeric digits (such as "419")
+        type: object
+        additionalProperties: false
+        required:
+          - region_code
+          - number
+        properties:
+          region_code:
+            description: |
+              A string representing a BCP-47 region code.
+            type: string
+            pattern: '^[A-Z]{2}$'
+          number:
+            type: string
+            pattern: '^[0-9]{3}$'
+  - type: object
+    required:
+      - number
+    additionalProperties: false
+    properties:
+      number:
+        description: |
+          A string representing an [E164][] number. 
+          This property is formatted as a leading plus sign (`+`), followed by a phone
+          number that uses a relaxed ITU E.164 format consisting of the country calling
+          code (1 to 3 digits) and the subscriber number, with no additional spaces or
+          formatting
+          The ITU E.164 format limits the latter to 12 digits, but in practice not all
+          countries respect that, so we relax that restriction here. National-only
+          numbers are not allowed.
+        type: string
+        pattern: '^[+][0-9]+'
+        minLength: 7
+        maxLength: 17
+      extension:
+        description: |
+          **must not** include a leading "x" that services simply to
+          indicate that the value is a phone number extension; this is implicit in the
+          property itself.
+        type: string
+        pattern: '^(?!x)[0-9#,pw]+'
+        maximum: 40
+examples:
+  short_code_with_region_code:
+    short_code:
+      region_code: 'US'
+      number": '911'
+  number_only:
+    number: '+15552220123'
+  number_with_extension:
+    number: '+15552220123'
+    extension: '123,,,456'
