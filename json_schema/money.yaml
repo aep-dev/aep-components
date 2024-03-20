@@ -33,7 +33,7 @@ properties:
     type: string
   quantity:
     description: The quantity of currency.
-    $ref: decimal#
+    $ref: /json_schema/decimal#
 examples:
   - 'value_equals_$5_USD':
       currency_code: 'USD'
