@@ -37,7 +37,7 @@ properties:
     type: integer
     format: int32
 examples:
-  - value_equals_17:
+  - 'value_equals_17':
       significand: 17
       exponent: 0
   - 'value_equals_-0.005':
