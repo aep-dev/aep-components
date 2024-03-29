@@ -10,3 +10,4 @@ lint:
    - PACKAGE_VERSION_SUFFIX
 deps:
   - buf.build/googleapis/googleapis
+  - buf.build/bufbuild/protovalidate
