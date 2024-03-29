@@ -21,10 +21,7 @@ import "google/protobuf/any.proto";
 // google.rpc.Status.
 //
 // The `additional_details` field is provided for APIs which need to provide
-// additional structured error information. APIs using `additional_details`
-// **should** also populate the applicable top-field fields of ProblemDetails;
-// `additional_details` **should not** be used as a substitute for
-// ProblemDetails.
+// additional structured error information.
 message ProblemDetails {
   // A URI reference that identifies the problem type.
   //
@@ -135,5 +132,9 @@ message ProblemDetails {
   string instance = 5 [(buf.validate.field).string.uri = true];
 
   // Additional details about the problem.
+  //
+  // APIs using `additional_details` **should** also populate the applicable
+  // top-field fields of ProblemDetails; `additional_details` **should not** be
+  // used as a substitute for ProblemDetails.
   google.protobuf.Any extra_details = 6;
 }
