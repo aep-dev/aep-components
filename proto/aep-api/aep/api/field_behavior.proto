@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package aep.api;
 
-import "aep/protobuf/descriptor.proto";
+import "google/protobuf/descriptor.proto";
 
 option go_package = "aep.dev/api";
 option java_multiple_files = true;
