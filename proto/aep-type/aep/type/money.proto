@@ -2,14 +2,14 @@ syntax = "proto3";
 
 package aep.type;
 
-import "aep/type/decimal.proto";
-
 option cc_enable_arenas = true;
 option go_package = "aep.dev/type";
 option java_multiple_files = true;
 option java_outer_classname = "MoneyProto";
 option java_package = "dev.aep.type";
 option objc_class_prefix = "AEP";
+
+import "aep/type/decimal.proto";
 
 // Represents an amount of money with its currency type.
 //
