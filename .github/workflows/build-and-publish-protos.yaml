@@ -26,3 +26,5 @@ jobs:
       - uses: bufbuild/buf-action@v0.2
         with:
           token: ${{ secrets.BUF_TOKEN }}
+          pr_comment: false
+          format: false
