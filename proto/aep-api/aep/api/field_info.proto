@@ -2,15 +2,15 @@ syntax = "proto3";
 
 package aep.api;
 
+import "google/protobuf/descriptor.proto";
+import "google/protobuf/duration.proto";
+
 option cc_enable_arenas = true;
 option go_package = "aep.dev/api";
 option java_multiple_files = true;
 option java_outer_classname = "FieldBehaviorProto";
 option java_package = "dev.aep.api";
 option objc_class_prefix = "AEP";
-
-import "google/protobuf/descriptor.proto";
-import "google/protobuf/duration.proto";
 
 // A field option documenting the applicable lifetime of a field, e.g. an
 // idempotency key.

@@ -19,14 +19,14 @@ syntax = "proto3";
 
 package aep.type;
 
+import "buf/validate/validate.proto";
+
 option cc_enable_arenas = true;
 option go_package = "aep.dev/type";
 option java_multiple_files = true;
 option java_outer_classname = "PhoneNumberProto";
 option java_package = "dev.aep.type";
 option objc_class_prefix = "AEP";
-
-import "buf/validate/validate.proto";
 
 // An object representing a phone number in a way suitable as an API wire
 // format.
@@ -71,12 +71,11 @@ message PhoneNumber {
     //
     // Reference(s):
     //  - http://www.unicode.org/reports/tr35/#unicode_region_subtag
-    string region_code = 1
-        [(buf.validate.field).string = { pattern: "^([A-Z]{2}|[0-9]{3})$" }];
+    string region_code = 1 [(buf.validate.field).string = {pattern: "^([A-Z]{2}|[0-9]{3})$"}];
 
     // Required. The short code digits, without a leading plus ('+') or country
     // calling code, e.g. "611".
-    string number = 2 [(buf.validate.field).string = { pattern: "^[0-9]+$" }];
+    string number = 2 [(buf.validate.field).string = {pattern: "^[0-9]+$"}];
   }
 
   // Required.  Either a regular number, or a short code.  New fields may be
@@ -98,8 +97,7 @@ message PhoneNumber {
     //  - https://www.itu.int/rec/T-REC-E.164-201011-I
     //  - https://en.wikipedia.org/wiki/E.164.
     //  - https://en.wikipedia.org/wiki/List_of_country_calling_codes
-    string number = 1
-        [(buf.validate.field).string = { pattern: "^\\+[0-9]{1,3}[0-9]+$" }];
+    string number = 1 [(buf.validate.field).string = {pattern: "^\\+[0-9]{1,3}[0-9]+$"}];
 
     // A short code.
     //
@@ -117,5 +115,5 @@ message PhoneNumber {
   // field is normally only set in conjunction with an E.164 number. It is held
   // separately from the E.164 number to allow for short code extensions in the
   // future.
-  string extension = 3 [(buf.validate.field).string = { max_len: 40 }];
+  string extension = 3 [(buf.validate.field).string = {max_len: 40}];
 }
