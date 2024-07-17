@@ -10,7 +10,7 @@ option java_outer_classname = "FieldBehaviorProto";
 option java_package = "com.aep.api";
 option objc_class_prefix = "AEP";
 
-extend aep.protobuf.FieldOptions {
+extend google.protobuf.FieldOptions {
   // A designation of a specific field behavior (required, output only, etc.)
   // in protobuf messages.
   //
