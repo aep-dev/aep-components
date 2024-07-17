@@ -9,7 +9,7 @@ option java_outer_classname = "IdempotencyKeyProto";
 option java_package = "dev.aep.api";
 option objc_class_prefix = "AEP";
 
-import "google/api/field_behavior.proto";
+import "aep/api/field_behavior.proto";
 import "google/protobuf/descriptor.proto";
 import "google/protobuf/timestamp.proto";
 
@@ -21,7 +21,7 @@ import "google/protobuf/timestamp.proto";
 message IdempotencyKey {
   // The unique key to use for idempotency.
   // string key = 1;
-  string key = 1 [(google.api.field_behavior) = REQUIRED];
+  string key = 1 [(aep.api.field_behavior) = REQUIRED];
 
   // The timestamp at which the first request was sent.
   //
@@ -29,5 +29,5 @@ message IdempotencyKey {
   // (which *may* exceed the annotated minimum lifetime), the server *must*
   // return an error.
   google.protobuf.Timestamp first_sent = 2
-      [(google.api.field_behavior) = REQUIRED];
+      [(aep.api.field_behavior) = REQUIRED];
 }
