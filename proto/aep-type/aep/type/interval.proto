@@ -39,7 +39,7 @@ message Interval {
   option (buf.validate.message).cel = {
     id: "Interval.non-empty",
     message: "start must be <= end",
-    expression: "this.start <= this.end",
+    expression: "this.start_time <= this.end_time",
   };
 
   // Optional. Inclusive start of the interval.

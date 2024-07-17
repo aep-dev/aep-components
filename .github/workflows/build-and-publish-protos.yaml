@@ -1,30 +1,30 @@
 ---
-name: build-and-publish-protos
+name: build-test-and-publish-protos
 on:
+  push:
+    paths:
+      - .github/workflows/build-and-publish-protos.yaml
+      - 'proto/**'
+      - buf.yaml
+      - buf.lock
   pull_request:
     paths:
-      - 'proto/**/*.proto'
+      - .github/workflows/build-and-publish-protos.yaml
+      - 'proto/**'
+      - buf.yaml
+      - buf.lock
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+  delete:
+permissions:
+  contents: read
+  pull-requests: write
 jobs:
-  build-and-publish-protos:
+  buf:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - uses: bufbuild/buf-setup-action@v1.19.0
-
-      - name: Verify that protos build.
-        run: buf build
-
-      - id: push-aep-type
-        uses: bufbuild/buf-push-action@v1
+      - uses: actions/checkout@v4
+      - uses: bufbuild/buf-action@v0.2
         with:
-          buf_token: ${{ secrets.BUF_TOKEN }}
-          input: proto/aep-type
-          draft: ${{ github.ref_name != 'main'}}
-
-      - id: push-aep-api
-        uses: bufbuild/buf-push-action@v1
-        with:
-          buf_token: ${{ secrets.BUF_TOKEN }}
-          input: proto/aep-api
-          draft: ${{ github.ref_name != 'main'}}
+          token: ${{ secrets.BUF_TOKEN }}
+          pr_comment: false
+          format: false
