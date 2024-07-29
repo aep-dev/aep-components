@@ -14,7 +14,7 @@ uniform behavior (and JSON serialization) across IDLs.
 Protobuf's built-in `oneof` supports mutual exclusion of fields. However, it
 does not have a way for an API indicate that at least one of the fields must be
 set. For this purpose, a protobuf `oneof` may be annotated with
-[`aep.api.OneOfBehavior`](../proto/aep-api/aep/api/oneof_behavior.proto):
+[`aep.api.OneofBehavior`](../proto/aep-api/aep/api/oneof_behavior.proto):
 
 ```proto
 message Document {
@@ -31,7 +31,7 @@ message Document {
     string group = 2 [(google.api.resource_reference) = {
       type: "apis.example.com/Group",
     }];
-  } [(aep.api.OneOfBehavior) = {required: true}];
+  } [(aep.api.OneofBehavior) = {required: true}];
 }
 ```
 
