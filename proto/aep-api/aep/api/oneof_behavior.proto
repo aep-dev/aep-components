@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package aep.api;
+
+option cc_enable_arenas = true;
+option go_package = "aep.dev/api";
+option java_multiple_files = true;
+option java_outer_classname = "OneOfBehaviorProto";
+option java_package = "dev.aep.api";
+option objc_class_prefix = "AEP";
+
+import "google/protobuf/descriptor.proto";
+
+// Used to specify the behavior of a `oneof`.
+message OneOfBehavior {
+  // If set, one field within the `oneof` must be set.
+  //
+  // When unset, the `oneof` is implicitly optional (the default behavior in
+  // protobuf).
+  bool required = 1;
+}
