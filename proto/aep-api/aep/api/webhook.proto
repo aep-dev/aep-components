@@ -1,15 +1,15 @@
 syntax = "proto3";
 
-package aep.api.webhooks;
+package aep.api;
 
 import "google/protobuf/any.proto";
 import "google/protobuf/descriptor.proto";
 import "google/protobuf/timestamp.proto";
 
-option java_package = "com.aep.api.webhooks";
+option java_package = "dev.aep.api";
 option java_multiple_files = true;
 option java_outer_classname = "NotificationProto";
-option go_package = "apis.roblox.com/aep.api.webhooks";
+option go_package = "aep.dev/api";
 
 // Provides a generic wrapper for all webhook notifications.
 message Notification {
