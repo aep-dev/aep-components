@@ -1,0 +1,24 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://aep.dev/json-schema/type/operation.json
+type: object
+description: "Represents a Long Running Operation that can be used to check the status of an asynchronous operation."
+required:
+  - name
+  - done
+properties:
+  path:
+    type: string
+    description: "The server-assigned path of the operation, which is unique within the service."
+  metadata:
+    type: object
+    description: "Service-specific metadata associated with the operation."
+    additionalProperties: true
+  done:
+    type: boolean
+    description: "If the value is false, it means the operation is still in progress. If true, the operation is completed."
+  error:
+    $ref: https://aep.dev/json-schema/type/problems.json
+  response:
+    type: object
+    description: "The normal response of the operation in case of success."
+    additionalProperties: true

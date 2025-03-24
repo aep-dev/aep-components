@@ -1,5 +1,5 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-$id: https://aep.dev/component.type.decimal.json
+$id: https://aep.dev/json-schema/type/decimal.json
 title: Decimal
 description: |
   Represents a decimal number in a form similar to scientific notation.
@@ -14,8 +14,8 @@ description: |
   as well as that of a `decimal64`.
 type: object
 required:
-- significand
-- exponent
+  - significand
+  - exponent
 additionalProperties: false
 properties:
   significand:
