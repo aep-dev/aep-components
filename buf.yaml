@@ -9,6 +9,10 @@ modules:
         - FIELD_NOT_REQUIRED
         - PACKAGE_NO_IMPORT_CYCLE
         - PACKAGE_VERSION_SUFFIX
+        # skip Operation, Empty as responses
+        - RPC_RESPONSE_STANDARD_NAME
+        - RPC_REQUEST_STANDARD_NAME
+        - RPC_REQUEST_RESPONSE_UNIQUE
       disallow_comment_ignores: true
     breaking:
       use:
