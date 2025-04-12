@@ -16,6 +16,7 @@ modules:
       except:
         - EXTENSION_NO_DELETE
         - FIELD_SAME_DEFAULT
+        - FILE_SAME_GO_PACKAGE
   - path: proto/aep-conformance
     name: buf.build/aep/conformance
     lint:
@@ -34,6 +35,7 @@ modules:
       except:
         - EXTENSION_NO_DELETE
         - FIELD_SAME_DEFAULT
+        - FILE_SAME_GO_PACKAGE
   - path: proto/aep-type
     name: buf.build/aep/type
     lint:
@@ -50,6 +52,7 @@ modules:
       except:
         - EXTENSION_NO_DELETE
         - FIELD_SAME_DEFAULT
+        - FILE_SAME_GO_PACKAGE
 deps:
   - buf.build/bufbuild/protovalidate
   - buf.build/googleapis/googleapis

@@ -3,7 +3,6 @@ syntax = "proto3";
 package aep.api;
 
 option cc_enable_arenas = true;
-option go_package = "aep.dev/api";
 option java_multiple_files = true;
 option java_outer_classname = "FieldBehaviorProto";
 option java_package = "dev.aep.api";
