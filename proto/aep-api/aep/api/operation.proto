@@ -22,7 +22,6 @@ import "google/protobuf/duration.proto";
 import "google/protobuf/descriptor.proto";
 
 option cc_enable_arenas = true;
-option go_package = "aep.dev/api";
 option java_multiple_files = true;
 option java_outer_classname = "OperationsProto";
 option java_package = "dev.aep.api";
@@ -34,7 +33,7 @@ extend google.protobuf.MethodOptions {
   // long-running operations.
   //
   // Required for methods that return `aep.api.Operation`; invalid otherwise.
-  aep.api.OperationInfo operation_info = 1049;
+  aep.api.OperationInfo operation_info = 1264;
 }
 
 // This resource represents a long-running operation that is the result of a
