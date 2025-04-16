@@ -1,0 +1,45 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://aep.dev/json-schema/extensions/x-aep-long-running-operation.json
+type: object
+description: |
+  Represents metadata about a long-running operation. The
+  extensions is used to provide additional information about
+  an OpenAPI Operation object.
+
+  Should be used in APIs where the response type is
+  https://aep.dev/json-schema/type/operation.json, to
+  provide additional information that is required for
+  aep clients to interface with the operation.
+
+  Example:
+
+  ```yaml
+  paths:
+    "/v1/books/{book_id}:archiveBook":
+      post:
+        operationId: archiveBook
+        description: Archive a book, not allowing further editing.
+        x-aep-long-running-operation:
+          response:
+            schema:
+              $ref: https://aep.dev/json-schema/type/operation.json
+        responses:
+          200:
+            ...
+  ```
+required:
+  - response
+additionalProperties: false
+properties:
+  response:
+    description: Information about the response of the operation.
+    type: object
+    properties:
+      schema:
+        description: |
+          The schema of the response of the operation.
+
+          This is a Schema that describes the structure of the response
+          object of the completed long-running-operation. It must be a valid
+          OpenAPI Schema (preferably a JSON Schema).
+        type: object
