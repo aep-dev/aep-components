@@ -1,5 +1,5 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-$id: https://aep.dev/json-schema/type/money.json
+$id: https://aep.dev/json-schema/types/money.json
 title: Money
 description: |
   Represents an amount of money with its currency type.

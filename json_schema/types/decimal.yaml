@@ -1,5 +1,5 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-$id: https://aep.dev/json-schema/type/decimal.json
+$id: https://aep.dev/json-schema/types/decimal.json
 title: Decimal
 description: |
   Represents a decimal number in a form similar to scientific notation.
