@@ -17,6 +17,7 @@ syntax = "proto3";
 package aep.api;
 
 import "aep/api/problem_details.proto";
+import "google/api/resource.proto";
 import "google/protobuf/any.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/descriptor.proto";
@@ -72,6 +73,13 @@ message Operation {
     // `TakeSnapshotResponse`.
     google.protobuf.Any response = 5;
   }
+
+  option (google.api.resource) = {
+    type: "aep.dev/Operation",
+    pattern: [],
+    plural: "operations",
+    singular: "operation"
+  };
 }
 
 // The request message for
