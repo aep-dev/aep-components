@@ -20,26 +20,32 @@ description: |
         operationId: archiveBook
         description: Archive a book, not allowing further editing.
         x-aep-long-running-operation:
-          response:
-            schema:
+          response_type:
               $ref: https://aep.dev/json-schema/type/operation.json
+          metadata_type:
+              type: object
+              properties:
+                progress:
+                  type: number
+                  minimum: 0
+                  maximum: 100
         responses:
           200:
             ...
   ```
 required:
-  - response
+  - response_type
 additionalProperties: false
 properties:
-  response:
-    description: Information about the response of the operation.
+  response_type:
     type: object
-    properties:
-      schema:
-        description: |
-          The schema of the response of the operation.
-
-          This is a Schema that describes the structure of the response
-          object of the completed long-running-operation. It must be a valid
-          OpenAPI Schema (preferably a JSON Schema).
-        type: object
+    description: |
+      A schema that describes the structure of the response
+      object of the completed long-running-operation. It must be a valid
+      OpenAPI Schema (preferably a JSON Schema).
+  metadata_type:
+    type: object
+    description: |
+      A schema that describes the structure of the metadata
+      object of the long-running-operation. It must be a valid
+      OpenAPI Schema (preferably a JSON Schema).
