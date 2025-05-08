@@ -1,5 +1,5 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-$id: https://aep.dev/json-schema/type/operation.json
+$id: https://aep.dev/json-schema/types/operation.json
 type: object
 description: "Represents a Long Running Operation that can be used to check the status of an asynchronous operation."
 required:
