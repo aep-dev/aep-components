@@ -1,0 +1,29 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://aep.dev/json-schema/extensions/x-aep-resource.json
+title: x-aep-resource
+description: Defines the resource name patterns and naming for an AEP API resource
+type: object
+required:
+  - singular
+  - plural
+  - patterns
+properties:
+  singular:
+    type: string
+    description: The singular form of the resource name
+    pattern: "^[a-z][a-z0-9-]*$"
+  plural:
+    type: string
+    description: The plural form of the resource name
+    pattern: "^[a-z][a-z0-9-]*$"
+  patterns:
+    type: array
+    description: The resource name patterns that are valid for this resource
+    items:
+      type: string
+      pattern: "^[a-z][a-z0-9-]*/\\{[a-z][a-z0-9-]*\\}(/[a-z][a-z0-9-]*/\\{[a-z][a-z0-9-]*\\})*$"
+    minItems: 1
+  singleton:
+    type: boolean
+    description: If true, the resource is a singleton.
+    default: false
