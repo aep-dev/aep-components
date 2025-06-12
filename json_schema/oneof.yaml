@@ -1,0 +1,21 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://aep.dev/component.oneof.json
+title: x-aep-oneof
+description: |
+  Represents a mutual exclusion constraint over multiple properties.
+
+  It is an error for any properties specified by a oneof to be required.
+type: object
+required: [properties]
+additionalProperties: false
+properties:
+  properties:
+    description: |
+      A set of properties that are mutually exclusive.
+    type: array
+    items:
+      type: string
+  required:
+    description: |
+      If set, exactly one property from the `properties` array must be present on the object.
+    type: string
