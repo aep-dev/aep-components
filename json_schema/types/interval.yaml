@@ -1,5 +1,5 @@
 $schema: https://json-schema.org/draft/2020-12/schema
-$id: https://aep.dev/json-schema/type/interval.json
+$id: https://aep.dev/json-schema/types/interval.json
 title: Interval
 description: |
   Represents a time interval, encoded as a Timestamp start (inclusive) and a
