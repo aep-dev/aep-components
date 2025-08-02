@@ -4,13 +4,13 @@ on:
   push:
     paths:
       - .github/workflows/build-and-publish-protos.yaml
-      - 'proto/**'
+      - "proto/**"
       - buf.yaml
       - buf.lock
   pull_request:
     paths:
       - .github/workflows/build-and-publish-protos.yaml
-      - 'proto/**'
+      - "proto/**"
       - buf.yaml
       - buf.lock
     types: [opened, synchronize, reopened, labeled, unlabeled]

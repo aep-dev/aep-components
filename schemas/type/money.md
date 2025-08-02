@@ -16,7 +16,6 @@ A `Money` has two fields:
   with "X-", in order to distinguish them from potential future ISO 4217 codes.
 
   Examples:
-
   - "USD" - ISO 4217 code for United States dollar
   - "X-BTC" - Potential API-defined extension for Bitcoin.
   - "X-.RBX" - Potential API-defined extension for the virtual currency Robux
