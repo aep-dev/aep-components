@@ -42,7 +42,6 @@ A `PhoneNumber` has two main fields, exactly one of which must be populated:
   number that uses a relaxed ITU E.164 format consisting of the country calling
   code (1 to 3 digits) and the subscriber number, with no additional spaces or
   formatting, e.g.:
-
   - correct: "+15552220123"
   - incorrect: "+1 (555) 222-01234 x123".
 

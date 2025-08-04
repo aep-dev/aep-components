@@ -22,7 +22,6 @@ An `Operation` has the following fields:
   populated.
 
 - Two mutually exclusive fields containing the result of an operation:
-
   - `error` is the error result of the operation in case of failure or
     cancellation. Its type should match the standard error representation in a
     given API or IDL (for example, `aep.api.ProblemDetails` in protocol buffer
