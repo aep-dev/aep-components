@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package aep.api;
+
+import "google/protobuf/any.proto";
+import "google/protobuf/descriptor.proto";
+import "google/protobuf/timestamp.proto";
+
+option java_package = "dev.aep.api";
+option java_multiple_files = true;
+option java_outer_classname = "NotificationProto";
+option go_package = "aep.dev/api";
+
+// Provides a generic wrapper for all webhook notifications.
+message Notification {
+  // An ID that represents a single notification.
+  //
+  // The value of this field should be consistent across multiple attempts to
+  // send the same notification; clients can use it to deduplicate redundant
+  // notifications.
+  //
+  // This is typically, though not always, a UUID.
+  string id = 1;
+
+  // The type of the event that triggered the notification.
+  //
+  // The value of this field should directly correspond to the type of the
+  // payload.
+  //
+  // Clients can use this field to route the event without having to inspect the
+  // contents of the payload.
+  string event_type = 2;
+
+  // The time when the event that triggered the notification occurred.
+  google.protobuf.Timestamp event_time = 3;
+
+  // The payload of the notification.
+  //
+  // The type of this payload should directly correspond to the event type.
+  google.protobuf.Any payload = 4;
+}
+
+extend google.protobuf.MessageOptions {
+  // Indicates that the message is a webhook payload.
+  WebhookPayloadConfiguration webhook_payload = 50000;
+}
+
+// Contains metadata about webhook payloads.
+//
+// Example:
+//
+// ```proto
+// // This notification is sent when a GroupJoinRequest is created; that is,
+// // when a user requests to join a group.
+// message BookArchived {
+//   option (aep.api.webhook_payload) = {
+//     event_type: "book_archived"
+//   };
+// }
+// ```
+message WebhookPayloadConfiguration {
+  // The event type of the webhook notification that this payload is associated
+  // with.
+  string event_type = 1;
+}
