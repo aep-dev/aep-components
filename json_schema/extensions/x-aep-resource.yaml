@@ -27,3 +27,8 @@ properties:
     type: boolean
     description: If true, the resource is a singleton.
     default: false
+  type:
+    type: string
+    description: >
+      The type of resource, in the form of `{api name}.{resource singular}`.
+      For example, `api.examples.com/user`.
