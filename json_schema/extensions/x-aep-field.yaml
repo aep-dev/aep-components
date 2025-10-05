@@ -1,0 +1,19 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://aep.dev/json-schema/extensions/x-aep-field.yaml
+title: x-aep-field
+description: Defines attributes of a field in an AEP API
+type: object
+properties:
+  behavior:
+    description: Describes the behavior of the field in an AEP API
+    type: array
+    items:
+      enum:
+        # Denotes a field as immutable.
+        # This indicates that the field may be set once in a request to create a
+        # resource, but may not be changed thereafter.
+        - "IMMUTABLE"
+        # Denotes a field as input only.
+        # This indicates that the field is provided in requests, and the
+        # corresponding field is not included in output.
+        - "INPUT_ONLY"
