@@ -17,3 +17,19 @@ properties:
         # This indicates that the field is provided in requests, and the
         # corresponding field is not included in output.
         - "INPUT_ONLY"
+  resource_reference:
+    description: Describes a resource reference for fields that reference API resources
+    type: object
+    properties:
+      type:
+        description: |
+          The resource type that the annotated field references.
+
+          Example:
+            "library.example.com/Topic"
+
+          Occasionally, a field may reference an arbitrary resource. In this case,
+          APIs use the special value "*" in their resource reference.
+        type: array
+        items: string
+    additionalProperties: false
