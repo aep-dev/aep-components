@@ -4,12 +4,13 @@ package aep.api;
 
 option cc_enable_arenas = true;
 option java_multiple_files = true;
-option java_outer_classname = "FieldBehaviorProto";
+option java_outer_classname = "FieldInfoProto";
 option java_package = "dev.aep.api";
 option objc_class_prefix = "AEP";
 
 import "google/protobuf/descriptor.proto";
 import "google/protobuf/duration.proto";
+import "aep/api/field_behavior.proto";
 
 // A field option documenting the applicable lifetime of a field, e.g. an
 // idempotency key.
@@ -56,4 +57,7 @@ message FieldInfo {
   //       }];
   //     }
   repeated string resource_reference = 2;
+
+  // Describes the behavior of the field in requests and responses.
+  repeated FieldBehavior field_behavior = 3;
 }
