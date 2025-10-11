@@ -17,38 +17,6 @@ extend google.protobuf.FieldOptions {
   FieldInfo field_info = 10520;
 }
 
-// Defines a proto annotation that describes a string field that refers to
-// an API resource.
-message ResourceReference {
-  // The resource type that the annotated field references.
-  //
-  // Example:
-  //
-  //     message Subscription {
-  //       string topic = 2 [(aep.api.field_info) = {
-  //         resource_reference: {
-  //           type: "library.example.com/Topic"
-  //           // multiple types are allowed.
-  //           type: "library.example.com/OtherTopic"
-  //         }
-  //       }];
-  //     }
-  //
-  // Occasionally, a field may reference an arbitrary resource. In this case,
-  // APIs use the special value * in their resource reference.
-  //
-  // Example:
-  //
-  //     message GetResourceRequest {
-  //       string resource = 2 [(aep.api.field_info) = {
-  //         resource_reference: {
-  //           type: "*"
-  //         }
-  //       }];
-  //     }
-  repeated string type = 1;
-}
-
 // Various options related to the behavior of a field.
 //
 // This is, conceptually, supplementary to `google.api.FieldInfo`.
@@ -65,6 +33,27 @@ message FieldInfo {
   // idempotency key indefinitely, whatever the value of this field option.
   google.protobuf.Duration minimum_lifetime = 1;
 
-  // An annotation that describes a resource reference.
-  ResourceReference resource_reference = 2;
+  // The resource type that the annotated field references.
+  //
+  // Example:
+  //
+  //     message Subscription {
+  //       string topic = 2 [(aep.api.field_info) = {
+  //         resource_reference: "library.example.com/Topic"
+  //           // multiple types are allowed.
+  //         resource_reference: "library.example.com/OtherTopic"
+  //       }];
+  //     }
+  //
+  // Occasionally, a field may reference an arbitrary resource. In this case,
+  // APIs use the special value * in their resource reference.
+  //
+  // Example:
+  //
+  //     message GetResourceRequest {
+  //       string resource = 2 [(aep.api.field_info) = {
+  //         resource_reference: "*"
+  //       }];
+  //     }
+  repeated string resource_reference = 2;
 }
