@@ -54,5 +54,5 @@ modules:
         - FIELD_SAME_DEFAULT
         - FILE_SAME_GO_PACKAGE
 deps:
-  - buf.build/bufbuild/protovalidate
+  - buf.build/bufbuild/protovalidate:v1.0.0
   - buf.build/googleapis/googleapis
