@@ -4,7 +4,7 @@ from decimal import Decimal
 from typing import Dict, Any
 import jsonschema
 
-from aep_types.aep_type.aep.type import decimal_pb2
+from aep_types.aep.type import decimal_pb2
 
 # Load the schema
 schema_file = resources.files('aep_types').joinpath('schemas', 'type', 'decimal.yaml')

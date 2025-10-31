@@ -2,7 +2,7 @@ import pytest
 import jsonschema
 from decimal import Decimal
 from aep_types.decimal import to_proto, from_proto, to_json, from_json
-from aep_types.aep_type.aep.type import decimal_pb2
+from aep_types.aep.type import decimal_pb2
 
 def test_to_proto():
     d = Decimal("12.3")
