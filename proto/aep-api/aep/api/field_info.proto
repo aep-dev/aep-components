@@ -58,6 +58,9 @@ message FieldInfo {
   //     }
   repeated string resource_reference = 2;
 
+  // The resource type that the child collection annotates.
+  repeated string resource_reference_child_type = 4;
+
   // Describes the behavior of the field in requests and responses.
   repeated FieldBehavior field_behavior = 3;
 }
