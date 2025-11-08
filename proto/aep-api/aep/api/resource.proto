@@ -19,10 +19,14 @@ package aep.api;
 import "google/protobuf/descriptor.proto";
 
 option go_package = "github.com/aep-dev/aep-go/api;api";
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_outer_classname = "ResourceProto";
+option java_package = "dev.aep.api";
 
 extend google.protobuf.MessageOptions {
   // A descriptor for a resource type.
-  ResourceDescriptor resource = 1059;
+  ResourceDescriptor resource = 1264;
 }
 
 // A simple descriptor of a resource type.
@@ -50,5 +54,5 @@ message ResourceDescriptor {
   string singular = 4;
 
   // The list of parent resource types.
-  repeated string parents = 5;
+  repeated string parent = 5;
 }
