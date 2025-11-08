@@ -4,18 +4,24 @@ title: x-aep-resource
 description: Defines the resource name patterns and naming for an AEP API resource
 type: object
 required:
-  - singular
   - plural
+  - parents
   - patterns
+  - singular
+  - type
 properties:
-  singular:
-    type: string
-    description: The singular form of the resource name
-    pattern: "^[a-z][a-z0-9-]*$"
   plural:
     type: string
     description: The plural form of the resource name
     pattern: "^[a-z][a-z0-9-]*$"
+  parents:
+    type: array
+    description: The parent resources of this resource
+    items:
+      type: string
+      pattern: "^[a-z0-9][.-a-z0-9/]*[a-z0-9]$"
+    examples:
+      - "library.example.com/author"
   patterns:
     type: array
     description: The resource name patterns that are valid for this resource
@@ -27,8 +33,16 @@ properties:
     type: boolean
     description: If true, the resource is a singleton.
     default: false
+  singular:
+    type: string
+    description: The singular form of the resource name
+    pattern: "^[a-z][a-z0-9-]*$"
   type:
     type: string
     description: >
       The type of resource, in the form of `{api name}.{resource singular}`.
       For example, `api.examples.com/user`.
+    pattern: "^[a-z0-9][.-a-z0-9/]*[a-z0-9]$"
+    examples:
+      - "library.example.com/book"
+      - "library.example.com/author"
