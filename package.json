@@ -1,0 +1,8 @@
+{
+    "name": "aep-components",
+    "version": "1.0.0",
+    "description": "AEP (API Enhancement Proposals) components and schemas",
+    "devDependencies": {
+        "prettier": "3.6.2"
+    }
+}
