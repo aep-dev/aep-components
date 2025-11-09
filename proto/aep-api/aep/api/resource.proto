@@ -42,7 +42,7 @@ extend google.protobuf.MessageOptions {
 //       // Indicates this message defines a resource schema.
 //       // Declares the resource type in the format of {service}/{kind}.
 //       option (aep.api.resource) = {
-//         type: "pubsub.example.com/Topic"
+//         type: "pubsub.example.com/topic"
 //         pattern: "projects/{project}/topics/{topic}"
 //         singular: "topic"
 //         plural: "topics"
@@ -62,9 +62,9 @@ extend google.protobuf.MessageOptions {
 //         pattern: "organizations/{organization}/logs/{log}"
 //         singular: "logEntry"
 //         plural: "logEntries"
-//         parents: "projects"
-//         parents: "folders"
-//         parents: "organizations"
+//         parents: "project"
+//         parents: "folder"
+//         parents: "organization"
 //       };
 //     }
 message ResourceDescriptor {
@@ -119,8 +119,8 @@ message ResourceDescriptor {
   // the resource to exist under different parent types.
   //
   // Example: A resource that can exist under both projects and folders
-  // would list both "projects" and "folders" as parents.
+  // would list both "project" and "folder" as parents.
   //
-  // The values should correspond to the plural form of parent resource types.
+  // The values should correspond to the singular form of parent resource types.
   repeated string parents = 5;
 }
