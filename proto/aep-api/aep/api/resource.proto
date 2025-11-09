@@ -43,7 +43,7 @@ extend google.protobuf.MessageOptions {
 //       // Declares the resource type in the format of {service}/{kind}.
 //       option (aep.api.resource) = {
 //         type: "pubsub.example.com/topic"
-//         pattern: "projects/{project}/topics/{topic}"
+//         pattern: "projects/{project_id}/topics/{topic_id}"
 //         singular: "topic"
 //         plural: "topics"
 //       };
@@ -57,9 +57,9 @@ extend google.protobuf.MessageOptions {
 //     message LogEntry {
 //       option (aep.api.resource) = {
 //         type: "logging.example.com/log-entry"
-//         pattern: "projects/{project}/logs/{log}"
-//         pattern: "folders/{folder}/logs/{log}"
-//         pattern: "organizations/{organization}/logs/{log}"
+//         pattern: "projects/{project_id}/log-entries/{log_entry_id}"
+//         pattern: "folders/{folder_id}/log-entries/{log_entry_id}"
+//         pattern: "organizations/{organization_id}/log-entries/{log_entry_id}"
 //         singular: "logEntry"
 //         plural: "logEntries"
 //         parents: "project"
@@ -92,7 +92,7 @@ message ResourceDescriptor {
   //
   // Examples:
   //
-  //     - "projects/{project}/topics/{topic}"
+  //     - "projects/{project_id}/topics/{topic_id}"
   //     - "projects/{project_id}/knowledge-bases/{knowledge_base_id}"
   //
   // The components in braces correspond to the IDs for each resource in the
@@ -107,7 +107,7 @@ message ResourceDescriptor {
   string singular = 3;
 
   // The plural name used in the resource name, such as
-  // 'topics' for the resource name of 'projects/{project}/topics/{topic}'.
+  // 'topics' for the resource name of 'projects/{project_id}/topics/{topic_id}'.
   // This is the same concept as the `plural` field in k8s CRD spec.
   // https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/
   //
