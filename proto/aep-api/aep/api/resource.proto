@@ -1,0 +1,127 @@
+// Copyright 2025 Google LLC
+// Copyright 2025 AEP.dev
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package aep.api;
+
+import "google/protobuf/descriptor.proto";
+
+option cc_enable_arenas = true;
+option java_multiple_files = true;
+option java_outer_classname = "ResourceProto";
+option java_package = "dev.aep.api";
+option objc_class_prefix = "AEP";
+
+extend google.protobuf.MessageOptions {
+  // An annotation that describes a resource definition, see
+  // [ResourceDescriptor][].
+  ResourceDescriptor resource = 1266;
+}
+
+// A descriptor of a resource type.
+//
+// ResourceDescriptor annotates a resource message and associates the
+// resource's schema, the resource type, and the pattern of the resource name.
+//
+// Example:
+//
+//     message Topic {
+//       // Indicates this message defines a resource schema.
+//       // Declares the resource type in the format of {service}/{kind}.
+//       option (aep.api.resource) = {
+//         type: "pubsub.example.com/topic"
+//         pattern: "projects/{project_id}/topics/{topic_id}"
+//         singular: "topic"
+//         plural: "topics"
+//         parent: "project"
+//       };
+//     }
+//
+// Resources can have multiple patterns, typically because they can
+// live under multiple parents.
+//
+// Example:
+//
+//     message LogEntry {
+//       option (aep.api.resource) = {
+//         type: "logging.example.com/log-entry"
+//         pattern: "projects/{project_id}/log-entries/{log_entry_id}"
+//         pattern: "folders/{folder_id}/log-entries/{log_entry_id}"
+//         pattern: "organizations/{organization_id}/log-entries/{log_entry_id}"
+//         singular: "logEntry"
+//         plural: "logEntries"
+//         parent: "project"
+//         parent: "folder"
+//         parent: "organization"
+//       };
+//     }
+message ResourceDescriptor {
+  // The resource type. It must be in the format of
+  // {service_name}/{resource_type_kind}. The `resource_type_kind` must be
+  // singular and must not include version numbers.
+  //
+  // Example: `storage.example.com/bucket`
+  //
+  // The value of the resource_type_kind must follow the regular expression
+  // /[A-Za-z][a-zA-Z0-9]+/. It should start with an upper case character and
+  // should use kebab-case (lowercase-names-with-dashes). The maximum number of
+  // characters allowed for the `resource_type_kind` is 100.
+  string type = 1;
+
+  // The relative resource name pattern associated with this resource
+  // type. The DNS prefix of the full resource name shouldn't be specified here.
+  //
+  // The path pattern must follow the syntax, which aligns with HTTP binding
+  // syntax:
+  //
+  //     Template = Segment { "/" Segment } ;
+  //     Segment = LITERAL | Variable ;
+  //     Variable = "{" LITERAL "}" ;
+  //
+  // Examples:
+  //
+  //     - "projects/{project_id}/topics/{topic_id}"
+  //     - "projects/{project_id}/knowledge-bases/{knowledge_base_id}"
+  //
+  // The components in braces correspond to the IDs for each resource in the
+  // hierarchy. It is expected that, if multiple patterns are provided,
+  // the same component name (e.g. "project") refers to IDs of the same
+  // type of resource.
+  repeated string pattern = 2;
+
+  // The singular name of the resource, such as "topic" for a Topic resource.
+  // This is the same concept as the `singular` field in k8s CRD spec.
+  // https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/
+  string singular = 3;
+
+  // The plural name used in the resource name, such as
+  // 'topics' for the resource name of 'projects/{project_id}/topics/{topic_id}'.
+  // This is the same concept as the `plural` field in k8s CRD spec.
+  // https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/
+  //
+  // Note: The plural form is required even for singleton resources.
+  string plural = 4;
+
+  // The parent resource type(s) that this resource can be nested under.
+  // This field specifies one or more parents of the resource, allowing
+  // the resource to exist under different parent types.
+  //
+  // Example: A resource that can exist under both projects and folders
+  // would list both "project" and "folder" as parent.
+  //
+  // The values should correspond to the singular form of parent resource types.
+  repeated string parent = 5;
+}
