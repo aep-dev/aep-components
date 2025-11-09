@@ -15,7 +15,7 @@ import "aep/api/field_behavior.proto";
 // A field option documenting the applicable lifetime of a field, e.g. an
 // idempotency key.
 extend google.protobuf.FieldOptions {
-  FieldInfo field_info = 10520;
+  FieldInfo field_info = 1265;
 }
 
 // Various options related to the behavior of a field.
