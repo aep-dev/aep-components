@@ -16,6 +16,8 @@ syntax = "proto3";
 
 package aep.api;
 
+option go_package = "github.com/aep-dev/aep-go/api;api";
+
 import "aep/api/problem_details.proto";
 import "google/api/resource.proto";
 import "google/protobuf/any.proto";
