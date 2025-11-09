@@ -28,7 +28,7 @@ option objc_class_prefix = "AEP";
 extend google.protobuf.MessageOptions {
   // An annotation that describes a resource definition, see
   // [ResourceDescriptor][].
-  ResourceDescriptor resource = 1053;
+  ResourceDescriptor resource = 1253;
 }
 
 // A descriptor of a resource type.
