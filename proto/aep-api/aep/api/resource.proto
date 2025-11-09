@@ -28,7 +28,7 @@ option objc_class_prefix = "AEP";
 extend google.protobuf.MessageOptions {
   // An annotation that describes a resource definition, see
   // [ResourceDescriptor][].
-  ResourceDescriptor resource = 1253;
+  ResourceDescriptor resource = 1266;
 }
 
 // A descriptor of a resource type.
@@ -56,7 +56,7 @@ extend google.protobuf.MessageOptions {
 //
 //     message LogEntry {
 //       option (aep.api.resource) = {
-//         type: "logging.example.com/LogEntry"
+//         type: "logging.example.com/log-entry"
 //         pattern: "projects/{project}/logs/{log}"
 //         pattern: "folders/{folder}/logs/{log}"
 //         pattern: "organizations/{organization}/logs/{log}"
@@ -72,11 +72,11 @@ message ResourceDescriptor {
   // {service_name}/{resource_type_kind}. The `resource_type_kind` must be
   // singular and must not include version numbers.
   //
-  // Example: `storage.example.com/Bucket`
+  // Example: `storage.example.com/bucket`
   //
   // The value of the resource_type_kind must follow the regular expression
   // /[A-Za-z][a-zA-Z0-9]+/. It should start with an upper case character and
-  // should use PascalCase (UpperCamelCase). The maximum number of
+  // should use kebab-case (lowercase-names-with-dashes). The maximum number of
   // characters allowed for the `resource_type_kind` is 100.
   string type = 1;
 
@@ -93,7 +93,7 @@ message ResourceDescriptor {
   // Examples:
   //
   //     - "projects/{project}/topics/{topic}"
-  //     - "projects/{project}/knowledgeBases/{knowledge_base}"
+  //     - "projects/{project_id}/knowledge-bases/{knowledge_base_id}"
   //
   // The components in braces correspond to the IDs for each resource in the
   // hierarchy. It is expected that, if multiple patterns are provided,
