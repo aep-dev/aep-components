@@ -46,6 +46,7 @@ extend google.protobuf.MessageOptions {
 //         pattern: "projects/{project_id}/topics/{topic_id}"
 //         singular: "topic"
 //         plural: "topics"
+//         parent: "project"
 //       };
 //     }
 //
@@ -62,9 +63,9 @@ extend google.protobuf.MessageOptions {
 //         pattern: "organizations/{organization_id}/log-entries/{log_entry_id}"
 //         singular: "logEntry"
 //         plural: "logEntries"
-//         parents: "project"
-//         parents: "folder"
-//         parents: "organization"
+//         parent: "project"
+//         parent: "folder"
+//         parent: "organization"
 //       };
 //     }
 message ResourceDescriptor {
@@ -119,8 +120,8 @@ message ResourceDescriptor {
   // the resource to exist under different parent types.
   //
   // Example: A resource that can exist under both projects and folders
-  // would list both "project" and "folder" as parents.
+  // would list both "project" and "folder" as parent.
   //
   // The values should correspond to the singular form of parent resource types.
-  repeated string parents = 5;
+  repeated string parent = 5;
 }
