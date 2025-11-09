@@ -12,3 +12,13 @@ Common types used in AEPs
 aep.dev has registered the extension ids 1264-1274 with the [global extension registry](https://github.com/protocolbuffers/protobuf/blob/main/docs/options.md). Any extensions added to this project should use these values.
 
 To minimize the need to add new ids to the global registry, additions should try to re-use the existing extensions as much as possible (for example, additional field annotations should be added as fields to `aep.api.field_info`).
+
+### Quick Start
+
+```bash
+# lint
+make lint
+
+# fix as best as possible
+make fix
+```

@@ -10,6 +10,6 @@ install:
 lint: install
 	npx prettier --check **/*.md
 
-# Format files with prettier
-format: install
+# Fix all files automatically, best effort.
+fix: install
 	npx prettier --write **/*.md

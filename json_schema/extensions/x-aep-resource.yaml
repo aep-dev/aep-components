@@ -20,16 +20,22 @@ properties:
     items:
       type: string
       # see https://aep.dev/4/#type-name
-      pattern: "^[a-z0-9][.-a-z0-9/]*[a-z0-9]$"
-    examples:
-      - "library.example.com/author"
-      - "library.example.com/user-profile"
+      pattern: "^[a-z0-9][a-z0-9.-]*/[a-z0-9][-a-z0-9]*$"
+      examples:
+        - "library.example.com/author"
+        - "library.example.com/user-profile"
   patterns:
     type: array
     description: The resource name patterns that are valid for this resource
     items:
       type: string
-      pattern: "^[a-z][a-z0-9-]*/\\{[a-z][a-z0-9-]*\\}(/[a-z][a-z0-9-]*/\\{[a-z][a-z0-9-]*\\})*$"
+      # see https://aep.dev/4/#annotating-resource-types
+      # this asserts for a leading collection name and pairs of collection, id segments.
+      pattern: "^[a-z][a-z0-9-]*(/\\{[a-z][a-z0-9_]*\\}|[a-z][a-z0-9-])*" # WIP
+      examples:
+        - "books/{book_id}"
+        - "authors/{author_id}/books/{book_id}"
+        - "authors/{author_id}/books/{book_id}"
     minItems: 1
   singleton:
     type: boolean
@@ -44,9 +50,8 @@ properties:
     description: >
       The type of resource, in the form of `{api name}.{resource singular}`.
       For example, `api.examples.com/user`.
-    pattern:
-      "^[a-z0-9][.-a-z0-9/]*[a-z0-9]$"
-      # see https://aep.dev/4/#type-name
+    # see https://aep.dev/4/#type-name
+    pattern: "^[a-z0-9][a-z0-9_.]*/[a-z0-9][-a-z0-9]*$"
     examples:
       - "library.example.com/book"
       - "library.example.com/author"
