@@ -37,3 +37,9 @@ properties:
         "library.example.com/topic"
     type: array
     items: string
+  field_number:
+    description: |
+      A unique identifier for the field. This is useful when doing translation
+      to protocols that require indexing of fields, such as Protocol Buffers.
+    type: integer
+    minimum: 1
