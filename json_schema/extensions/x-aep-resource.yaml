@@ -5,7 +5,6 @@ description: Defines the resource name patterns and naming for an AEP API resour
 type: object
 required:
   - plural
-  - parents
   - patterns
   - singular
   - type
