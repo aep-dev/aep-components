@@ -9,6 +9,8 @@ install:
 # Run linting with prettier
 lint: install
 	npx prettier --check **/*.md
+	npm run lint:validate-patterns
+
 
 # Fix all files automatically, best effort.
 fix: install

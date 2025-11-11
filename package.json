@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "AEP (API Enhancement Proposals) components and schemas",
     "scripts": {
-        "lint": "tsx scripts/validate-patterns.ts",
+        "lint:validate-patterns": "tsx scripts/validate-patterns.ts",
         "test": "tsx scripts/test-validation.ts",
         "build": "tsc --noEmit"
     },
